@@ -1,0 +1,31 @@
+EJERCICIO 8c, PRACTICA 1.
+ORG 1000H
+LETRA DB "A"
+DB 0
+ORG 3000H
+ES_VOCAL: MOV dh,0FFh;es vocal
+CMP ax, 97;a
+jz FIN
+CMP ax, 101;e
+jz FIN
+CMP ax, 105;i
+jz FIN
+CMP ax, 111;o
+jz FIN
+CMP ax, 117;u
+jz FIN
+CMP ax, 65;A
+jz FIN 
+CMP ax, 69;E
+jz FIN
+CMP ax, 73;I
+jz FIN
+CMP ax, 85;U
+jz FIN
+MOV dh,00h;no es vocal
+FIN: RET
+ORG 2000H
+ MOV ax, LETRA 
+ CALL ES_VOCAL
+HLT
+END
