@@ -1,0 +1,26 @@
+EJERCICIO 9c, PRACTICA !.
+ORG 1000H
+N_ROTACIONES db 2
+VALOR DB 00100111B
+N DB 8
+ORG 3000H
+ROTARDER_N: sub bh,dh
+CALL ROTARIZ_N
+RET
+ROTARIZ_N: NOP
+aca: cmp bh,0
+jz fin
+call ROTARIZ
+dec bh
+jmp aca
+fin: RET
+ROTARIZ: add ah,ah
+adc ah,0
+RET
+ORG 2000H
+mov ah,VALOR
+mov dh,N_ROTACIONES
+mov bh,N
+call ROTARDER_N
+HLT
+END 
