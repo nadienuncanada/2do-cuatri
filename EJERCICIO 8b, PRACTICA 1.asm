@@ -1,0 +1,22 @@
+EJERCICIO 8b, PRACTICA 1.
+ORG 1000H
+CADENA DB "zaBcDE1#!"
+        DB 0
+ORG 3000H
+CONTAR_MIN: MOV cx,0
+ loop: MOV ah,[bx]
+CMP ah,0
+JZ FIN
+CMP ah, 123
+JNS nega
+CMP ah,97
+JS nega
+inc cx
+nega: inc bx
+jmp loop
+FIN: RET
+ORG 2000H
+ MOV bx, OFFSET CADENA
+ CALL CONTAR_MIN
+HLT
+END 
