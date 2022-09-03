@@ -1,0 +1,19 @@
+```asm
+EJERCICIO 8, PRACTICA 1.
+ORG 1000H
+PALABRA DB "abcd"
+        DB 00h
+ORG 3000H
+LONGITUD: MOV dx, 0
+aca: CMP byte ptr [bx],0
+ JZ fin
+ inc dx 
+ inc bx 
+JMP aca
+fin: RET
+ORG 2000H
+ MOV bx, OFFSET PALABRA
+ CALL LONGITUD
+HLT
+END 
+```
