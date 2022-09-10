@@ -29,10 +29,10 @@ print:MOV AL,6
 INT 7
 jmp fin 
 mult: MOV bx,offset NUMERITOS
-add bx,6
+mult2:add bx,6
 dec dl
 jz print
-jnz mult
+jnz mult2
  fin: RET 
 org 2000h
 MOV CL, 0 
@@ -48,4 +48,4 @@ OTRO: MOV BX, OFFSET MSJ
  call subrut
  jmp salto
  ffin: INT 0
- END; arreglar no funciona je
+ END
