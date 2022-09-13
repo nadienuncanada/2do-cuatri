@@ -79,7 +79,6 @@ procedure merge (v:vector;var l:lista2); //.Genere una nueva lista que totalice 
 		end;
 		if(min<>9999) then begin
 			min:=v[imin]^.dato.codo;
-			cant:=cant+1;
 			v[imin]:=v[imin]^.sig;
 		end;
 	end;
@@ -95,17 +94,17 @@ procedure merge (v:vector;var l:lista2); //.Genere una nueva lista que totalice 
 			ult:=nuevo;
 		end;
 	end;
-	var ult:lista2;min,cant,cantotal:integer;actual:entradas;
+	var ult:lista2;min,cantotal:integer;actual:entradas;
 	begin
 	l:=nil;
 	ult:=nil;
-	minimo(v,min,cant);
+	minimo(v,min,cantotal);
 		while(min<>9999) do begin
 			actual.codo:=min;cantotal:=0;
 		while (actual.codo=min) do begin
-			cantotal:=cantotal+cant;
+			cantotal:=cantotal+1;
 			agregaratras(ult,actual.codo,cantotal);
-			minimo(v,min,cant);
+			minimo(v,min,cantotal);
 		end;
 	end;	
 end;
