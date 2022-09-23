@@ -29,6 +29,7 @@ public class Ej03Matrices {
               int cant;  //        Luego, imprima el vector.
          for(j=0;j<5;j++){
             cant=0;
+	    vec[j]=0;
           for(i=0;i<5;i++){
                 cant=cant + matriz2[i][j];
                 vec[j]=cant;
