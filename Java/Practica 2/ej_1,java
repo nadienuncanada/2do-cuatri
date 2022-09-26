@@ -1,0 +1,25 @@
+package tema2;
+
+/
+ *
+ * @author josem
+ */
+import PaqueteLectura.Lector;
+public class ej_01 {
+
+    /
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        System.out.println("Ingrese Nombre");
+            String n=Lector.leerString();
+        System.out.println("Ingrese DNI");
+            int dni=Lector.leerInt();
+        System.out.println("Ingrese Edad");
+            int e=Lector.leerInt();
+        Persona ej1 = new Persona(n,dni,e);
+        System.out.println(ej1.toString());
+    }
+
+}
