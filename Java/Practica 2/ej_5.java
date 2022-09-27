@@ -3,7 +3,8 @@ package tema2;
 import PaqueteLectura.Lector;
 
 /**
- *
+ * Calcular e informar la cantidad de partidos que ganó River.
+- Calcular e informar el total de goles que realizó Boca jugando de local.
  * @author Igna
  * TO STRING 
  * public String  toString(){
@@ -37,9 +38,19 @@ public class ej_05 {
                  i=cant;
              }
           }
+          int pg=0,bg=0;
           for(i=0;i<cont;i++){
              System.out.println(par[i].toString());
+             if(par[i].getLocal().equalsIgnoreCase("Boca")){
+                bg=bg+par[i].getGolesLocal();
+             }
+             if(par[i].getVisitante().equalsIgnoreCase("River")|| par[i].getLocal().equalsIgnoreCase("River")){
+                 if(par[i].getGanador().equalsIgnoreCase("River")){
+                    pg++;
+                 }
+             }
+             }
+          System.out.println("La cantidad de Partidos que gano River son:"+pg);
+          System.out.println("La cantidad de goles totales de boca jugando de local son:"+bg);
           }
           }
-          
-       }
