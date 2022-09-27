@@ -51,6 +51,6 @@ public class ej_05 {
              }
              }
           System.out.println("La cantidad de Partidos que gano River son:"+pg);
-          System.out.println("La cantidad de goles totales de boca jugando de local son:"+bg);
+          System.out.println("La cantidad de goles totales de EL MAS GRANDE jugando de local son:"+bg);
           }
           }
