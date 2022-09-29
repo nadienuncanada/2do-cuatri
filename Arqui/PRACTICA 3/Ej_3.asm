@@ -117,4 +117,50 @@ INT 0
 END
 
 ----------------------------------------
-e-
+C- VERSION 2.0
+DATO EQU 40H
+ESTADO EQU 41H
+IMR EQU 21H
+EOI EQU 20H
+INT2 EQU 26H
+ORG 1000H
+MSJ DB "UNIVERSIDAD NACIONAL DE LA PLATA"
+FIN DB ?
+ORG 40
+DEAQUI DW AQUI
+ORG 3000H
+AQUI:  CMP BX,OFFSET FIN
+         JZ FINNN
+MOV AL,[BX]
+    OUT DATO,AL;printea
+
+    INC BX;avanza en la cadena
+    
+MOV AL,20H
+OUT EOI,AL
+IRET
+
+ORG 2000H
+MOV BX,OFFSET MSJ;le pasamos lo que tiene q printear
+CLI
+
+MOV AL, 11111011B; acitvamos las interrupciones de HANDSHAKE
+OUT IMR,AL
+
+IN AL,ESTADO
+OR AL,80H; ponemos en 1 el bit mas signi de estado para que sepa que va  funcionar por interrupciones
+OUT ESTADO,AL
+
+MOV AL,10; 10*4 va a ir a org 40
+OUT INT2,AL
+
+STI
+
+LOOPEAR: CMP BX,OFFSET FIN
+         JZ FINNN
+    IN AL,ESTADO
+    AND AL,1
+    JNZ LOOPEAR
+    
+FINNN: INT 0
+END
