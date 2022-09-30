@@ -1,0 +1,18 @@
+package tema3;
+
+/**
+ *
+ * @author Igna
+ */
+public class ej_1b {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+      triangulo t1 = new triangulo (3,3,4,"rojo","azul");
+       System.out.println(t1.calcularPerimetro()); 
+       System.out.println(t1.calcularArea());       
+    }
+    
+}
