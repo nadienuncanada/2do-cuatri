@@ -85,3 +85,41 @@ public class Estante {
         return null;
     }
 }
+package tema3;
+
+import PaqueteLectura.Lector;
+
+public class EJ3b {
+
+    public static void main(String[] args) {
+        Estante nuevo = new Estante();
+        //leer un libro y cargarlo
+        nuevo.agregar_libro(leerLibro());
+        nuevo.agregar_libro(leerLibro());
+        System.out.println(nuevo.buscar_titulo("Mujercitas").toString());
+    }
+    public static Libro leerLibro(){
+        //AUTOR
+        System.out.print("Ingrese el nombre del autor: ");
+        String nombreautor = Lector.leerString();
+        System.out.print("Ingrese su biografia: ");
+        String biog= Lector.leerString();
+        System.out.print("Ingrese su origen: ");
+        String orig= Lector.leerString();
+        AutorN au = new AutorN(nombreautor,biog,orig);
+        
+        //LIBRO
+        System.out.print("Ingrese el titulo del Libro: ");
+        String tit=Lector.leerString();
+        System.out.print("Ingrese el editorial: ");
+        String editorial = Lector.leerString();
+        System.out.print("Ingrese el año de edicion:");
+        int aedi= Lector.leerInt();
+        System.out.print("Ingrese ISBN: ");
+        String ISBN=Lector.leerString();
+        System.out.print("Ingrese el precio: ");
+        double precio=Lector.leerDouble();
+        return new Libro(tit,editorial,aedi,au,ISBN,precio);
+    }
+}
+
