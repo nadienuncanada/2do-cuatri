@@ -49,31 +49,35 @@ package tema3;
  */
 public class Estantes {
     private final int maxL=20;
-    private Libro [] libro;
-    private int dimL=0;
+    private Libro[] libro;
+    private int dimL;
     
     public Estantes(){
-        this.libro= new Libro[dimL];
         this.dimL=0;   
+        this.libro = new Libro[dimL];
+      
     }
-    public int getEstantes(int maxL){
-        return maxL;
+    public int getEstantes(){
+        return this.dimL ;
     }
     public Libro[]getLibro(){
-        return this.libro;
+        return libro;
     }
     
     public boolean getLleno(){
         return (this.maxL==20);
     }
-    public String getLibro(String unLibro){
-        String aux2= "no se encuentra";
-        for (int j=0;j<dimL;j++){
-            if (this.libro[dimL].getTitulo().equalsIgnoreCase(unLibro)){
-                 aux2=this.libro[j].toString();
+    public Libro getLibro(String titulo){
+        Libro aux2= null;
+        for (int j=0;j<this.dimL;j++){
+            if (this.libro[j].getTitulo().equalsIgnoreCase(titulo)){
+                 aux2=libro[j];
             }     
         }
         return aux2;
+    }
+    public void setLibro(Libro[] libro){
+        this.libro=libro;
     }
     public void setEstantes(Libro vlibro){
         this.libro[dimL]=vlibro;
