@@ -13,8 +13,12 @@ public class ej_03 {
      */
     public static void main(String[] args) {
         Estantes nuevo = new Estantes();
-        nuevo.setEstantes(datoLibro());
-        System.out.println(nuevo.getLibro("Mujercitas"));
+        System.out.println("Ingrese la cantidad de libros que quiere agregar: ");
+        int cant=Lector.leerInt();
+        for(int i=0;i<cant;i++){
+        nuevo.agregar_libro(datoLibro());
+        }
+        System.out.println(nuevo.buscar_libro("Mujercitas"));
 
         
     }
@@ -25,7 +29,7 @@ public class ej_03 {
         String bio= Lector.leerString();
     System.out.println("Ingresar Origen de Autor: ");
         String ori= Lector.leerString();    
-    AutorN aut= new AutorN(nom,bio,ori);
+    Autor aut= new Autor(nom,bio,ori);
         System.out.println("Nombre del Libro: ");
             String nl=Lector.leerString();
         System.out.println("Ingresar Editorial: ");
@@ -45,43 +49,42 @@ package tema3;
 
 /**
  *
- * @author Igna
+ * @author josem
  */
 public class Estantes {
-    private final int maxL=20;
-    private Libro[] libro;
     private int dimL;
+    private final int dimF=20;
+    private Libro[] libro;
     
-    public Estantes(){
-        this.dimL=0;   
-        this.libro = new Libro[dimL];
-      
+public Estantes(){
+    this.dimL=0;
+    this.libro=new Libro[dimF];
+}
+
+    public int getDimL() {
+        return this.dimL;
     }
-    public int getEstantes(){
-        return this.dimL ;
-    }
-    public Libro[]getLibro(){
+
+    public Libro[] getLibro() {
         return libro;
     }
-    
-    public boolean getLleno(){
-        return (this.maxL==20);
+
+    public void setLibro(Libro[] libro) {
+        this.libro = libro;
     }
-    public Libro getLibro(String titulo){
-        Libro aux2= null;
-        for (int j=0;j<this.dimL;j++){
-            if (this.libro[j].getTitulo().equalsIgnoreCase(titulo)){
-                 aux2=libro[j];
-            }     
-        }
-        return aux2;
-    }
-    public void setLibro(Libro[] libro){
-        this.libro=libro;
-    }
-    public void setEstantes(Libro vlibro){
+    public void agregar_libro(Libro vlibro){
         this.libro[dimL]=vlibro;
         this.dimL++;
     }
-    
+    public boolean lleno(){
+        return (dimL==20);
+    }
+    public Libro buscar_libro(String titulo){
+        for(int i=0;i<this.dimL;i++){
+            if(this.libro[i].getTitulo().equalsIgnoreCase(titulo)){
+                return this.libro[i];
+            }
+        }
+        return null;
+    }
 }
