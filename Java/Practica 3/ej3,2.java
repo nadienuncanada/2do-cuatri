@@ -1,13 +1,4 @@
 
-package tema3;
-
-
-public class Estante {
-    private int dimL;
-    private final int dimF = 20;
-    private Libro[] vector;
-//-------------------constructor-----------
-    
   package tema3;
 
 import PaqueteLectura.Lector;
@@ -46,6 +37,14 @@ public class EJ3b {
     }
 }
   //class  
+package tema3;
+
+
+public class Estante {
+    private int dimL;
+    private final int dimF = 20;
+    private Libro[] vector;
+//-------------------constructor-----------
   public Estante() {
         this.dimL = 0;
         this.vector=new Libro[dimF];
