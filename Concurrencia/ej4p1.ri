@@ -1,0 +1,57 @@
+programa nombrePrograma
+procesos
+  proceso Area13
+  variables
+    a:numero
+  comenzar
+    a:=PosCa
+    repetir(24)
+      repetir(99)
+        mientras(HayFlorEnLaEsquina)
+          tomarFlor
+        mover
+    a:=a+1    
+    Pos(a,1)
+  fin
+  proceso Area24
+  variables
+    a:numero
+  comenzar
+    a:=PosCa
+    repetir(24)
+      repetir(100)
+        mientras(HayPapelEnLaEsquina)
+          tomarPapel
+        mover
+    a:=a+1    
+    Pos(a,1)    
+  fin
+areas
+  Area1: AreaP (1,1,25,100)
+  Area2: AreaP (26,1,50,100)
+  Area3: AreaP (51,1,75,100)
+  Area4: AreaP (76,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Area13
+    Pos(51,1)
+    Area13
+  fin
+  robot robot2
+  comenzar
+    Area24
+    Pos(76,1)
+    Area24
+  fin
+variables
+  R1: robot1
+  R2: robot2
+comenzar
+  AsignarArea(R1,Area1)
+  AsignarArea(R1,Area3)
+  AsignarArea(R2,Area2)
+  AsignarArea(R2,Area4)
+  Iniciar(R1,1,1)
+  Iniciar(R2,26,1)
+fin
