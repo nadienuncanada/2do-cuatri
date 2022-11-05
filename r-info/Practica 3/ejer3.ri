@@ -1,0 +1,109 @@
+programa ejer3
+procesos
+  proceso recogerf(ES stop:boolean;ES cantFlores:numero;E avj:numero;E caj:numero)  
+  variables
+    avini:numero
+    caini:numero
+  comenzar
+    posini(avini,caini)
+    BloquearEsquina(avj,caj)
+    Pos(avj,caj)
+    si(HayFlorEnLaEsquina)
+      tomarFlor
+      cantFlores:=cantFlores+1
+    sino
+      stop:=F
+    Pos(avini,caini)
+    LiberarEsquina(avj,caj)
+  fin
+  proceso posini(ES avini:numero;ES caini:numero)
+  comenzar
+    avini:=PosAv
+    caini:=PosCa
+  fin
+  proceso esqrandom(ES avj:numero;ES caj:numero)
+  variables
+    av1:numero
+    ca1:numero
+  comenzar
+    Random(av1,2,10)
+    Random(ca1,2,10)
+    avj:=av1
+    caj:=ca1
+  fin
+areas
+  ciudad: AreaP(2,2,10,10)
+  silla: AreaP(1,1,1,1)
+  espera: AreaPC(2,1,5,1)
+robots
+  robot robotf
+  variables
+    av:numero
+    ca:numero
+    identificador:numero
+    cantF:numero
+    imax:numero
+    cantFm:numero
+  comenzar
+    cantFm:=-1
+    EnviarMensaje(1,r1)
+    EnviarMensaje(2,r2)
+    EnviarMensaje(3,r3)
+    EnviarMensaje(4,r4)
+    esqrandom(av,ca)
+    EnviarMensaje(av,r1)
+    EnviarMensaje(ca,r1)
+    EnviarMensaje(av,r2)
+    EnviarMensaje(ca,r2)
+    EnviarMensaje(av,r3)
+    EnviarMensaje(ca,r3)
+    EnviarMensaje(av,r4)
+    EnviarMensaje(ca,r4)
+    repetir 4
+      RecibirMensaje(identificador,*)
+      RecibirMensaje(cantF,*)
+      si(cantF>cantFm)
+        imax:=identificador
+        cantFm:=cantF
+    Informar('El robot que mas junto fue: 'imax)        
+  fin
+  robot robotflorero
+  variables
+    identificador:numero
+    stop:boolean
+    avj:numero
+    caj:numero
+    cantFlores:numero
+  comenzar
+    cantFlores:=0
+    stop:=V
+    RecibirMensaje(identificador,rf)
+    RecibirMensaje(avj,rf)
+    RecibirMensaje(caj,rf)
+    mientras(stop)
+      recogerf(stop,cantFlores,avj,caj)
+    EnviarMensaje(identificador,rf)
+    EnviarMensaje(cantFlores,rf)
+  fin
+variables
+  rf:robotf
+  r1:robotflorero
+  r2:robotflorero
+  r3:robotflorero
+  r4:robotflorero
+comenzar
+  AsignarArea(rf,silla)
+  AsignarArea(r1,espera)
+  AsignarArea(r2,espera)
+  AsignarArea(r3,espera)
+  AsignarArea(r4,espera)
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(r3,ciudad)
+  AsignarArea(r4,ciudad)
+  Iniciar(rf,1,1)
+  Iniciar(r1,2,1)
+  Iniciar(r2,3,1)
+  Iniciar(r3,4,1)
+  Iniciar(r4,5,1)
+fin
