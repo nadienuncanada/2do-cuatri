@@ -1,0 +1,127 @@
+programa nombrePrograma
+procesos
+  proceso randomf(ES av:numero;ES ca:numero)
+  variables
+    av1:numero
+    ca1:numero
+  comenzar
+    Random(av1,1,5)
+    Random(ca1,1,10)
+    av:=av1
+    ca:=ca1
+  fin
+  proceso gposini(ES avini:numero;ES caini:numero)
+  comenzar
+    avini:=PosAv
+    caini:=PosCa
+  fin
+  proceso reflores
+  variables
+    av:numero
+    ca:numero
+    avini:numero
+    caini:numero
+  comenzar
+    gposini(avini,caini)
+    randomf(av,ca)
+    BloquearEsquina(av,ca)
+    Pos(av,ca)
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+    Pos(avini,caini)
+    LiberarEsquina(av,ca)
+  fin
+  proceso randomp(ES av:numero;ES ca:numero)
+  variables
+    av1:numero
+    ca1:numero
+  comenzar
+    Random(av1,6,10)
+    Random(ca1,1,9)
+    av:=av1
+    ca:=ca1
+  fin
+  proceso repapeles
+  variables
+    avini:numero
+    caini:numero
+    av:numero
+    ca:numero
+  comenzar
+    gposini(avini,caini)
+    randomp(av,ca)
+    BloquearEsquina(av,ca)
+		Pos(av,ca)
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+    Pos(avini,caini)
+    LiberarEsquina(av,ca)
+  fin
+  proceso dejarf
+	variables
+		avini:numero
+    caini:numero
+  comenzar
+	gposini(avini,caini)
+    BloquearEsquina(10,10)
+    Pos(10,10)
+    mientras(HayFlorEnLaBolsa)
+      depositarFlor
+		Pos(avini,caini)
+    LiberarEsquina(10,10)
+  fin
+  proceso dejarp
+	variables
+		avini:numero
+    caini:numero
+  comenzar
+		gposini(avini,caini)
+    BloquearEsquina(10,10)
+    Pos(10,10)
+    mientras(HayPapelEnLaBolsa)
+      depositarPapel
+		Pos(avini,caini)
+    LiberarEsquina(10,10)
+  fin
+areas
+  ciudadf: AreaPC (1,1,5,10)
+  ciudadp: AreaPC(6,1,10,9)
+  comienzof: AreaPC(6,10,7,10)
+  comienzop: AreaPC(8,10,9,10)
+  dejar: AreaP(10,10,10,10)
+robots
+  robot floreros
+  comenzar
+    repetir 5
+      reflores
+    dejarf
+  fin
+  robot papeleros
+  comenzar
+    repetir 5
+      repapeles
+    dejarp
+  fin
+variables
+  rf: floreros
+  rf2: floreros
+  rp: papeleros
+  rp2: papeleros
+comenzar
+  AsignarArea (rf,ciudadf)
+  AsignarArea (rf,comienzof)
+  AsignarArea (rf,dejar)
+  AsignarArea (rf2,ciudadf)
+  AsignarArea (rf2,comienzof)
+  AsignarArea (rf2,dejar)
+  AsignarArea (rp,ciudadp)
+  AsignarArea (rp,comienzop)
+  AsignarArea (rp,dejar)
+  AsignarArea (rp2,ciudadp)
+  AsignarArea (rp2,comienzop)
+  AsignarArea (rp2,dejar)
+  Iniciar (rf,6,10)
+  Iniciar (rf2,7,10)
+  Iniciar (rp,8,10)
+  Iniciar (rp2,9,10)
+fin
