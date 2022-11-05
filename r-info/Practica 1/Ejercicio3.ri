@@ -1,0 +1,60 @@
+programa Ejercicio3
+procesos
+  proceso contar(ES p:numero
+  ES f:numero ES c:numero)
+  comenzar
+    f:=0
+    p:=0
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      f:=f+1
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      p:=p+1
+    si((p)-(f)=1)
+      c:=c+1
+    mientras(HayPapelEnLaBolsa)     
+      depositarPapel
+    mientras (HayFlorEnLaBolsa)
+      depositarFlor
+  fin
+  proceso caminar(ES f:numero ES p:numero ES c:numero)
+  variables
+    a:numero
+  comenzar
+    a:=1
+    repetir(2)
+      repetir(a)
+        contar(p,f,c)
+        mover
+      derecha
+      repetir(a)
+        contar(p,f,c)
+        mover
+      repetir(3)
+        derecha
+      a:=a+1  
+  fin
+areas
+  ciudad : AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    f,p,c:numero
+  comenzar
+    c:=0
+    caminar(f,p,c)
+    Informar(c)
+  fin
+variables
+  r1 : robot1
+  r2 : robot1
+  r3 : robot1
+comenzar
+  AsignarArea(r1,ciudad)
+  AsignarArea(r2,ciudad)
+  AsignarArea(r3,ciudad)
+  Iniciar(r1,1,6)
+  Iniciar(r2,6,3)
+  Iniciar(r3,11,1)
+fin
